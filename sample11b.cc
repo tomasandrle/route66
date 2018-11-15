@@ -10,7 +10,7 @@ int main()
     route66::create( 8080, "GET /stats",
         []( route66::request &req, std::ostream &headers, std::ostream &content ) {
             int CPUloading = rand() % 100;
-            int CPUcore = CPUloading - 30 < 0 ? 0 : rand() % (CPUloading - 30);
+            int CPUcore = CPUloading - 30 <= 0 ? 0 : rand() % (CPUloading - 30);
             double Disk = rand() % 50 + 50;
 
             headers << route66::mime(".json");
